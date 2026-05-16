@@ -849,37 +849,21 @@ This project is licensed under the **GNU General Public License v3.0** — see t
 
 ---
 
-##  Authors & Team
+## 🎬 Demo
 
+[![Watch the demo](https://img.shields.io/badge/Watch-Demo%20Video-red?style=for-the-badge&logo=youtube)](YOUR_VIDEO_LINK_HERE)
+
+---
+
+##  Authors & Team
 >  April 2026 · IIT Guwahati
 
----
-
-<table>
-  <tr>
-    <td align="center" width="200"><b> Faculty Advisor</b><br/><br/>Prof. Dr. Salil Kashyap</td>
-    <td align="center" width="200"><b> Teaching Assistant</b><br/><br/>Aditya Gupta</td>
-  </tr>
-</table>
-
----
-
-###  Team
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Built</th>
-  </tr>
-  <tr>
-    <td><b>Emani Sri Ajay Karthik</b></td>
-    <!-- <td><code>ESP32</code> &nbsp;<code>FreeRTOS</code> &nbsp;<code>firmware</code> &nbsp;<code>haptic engine</code></td> -->
-  </tr>
-  <tr>
-    <td><b>G Mani Shankar</b></td>
-    <!-- <td><code>edge server</code> &nbsp;<code>nav engine</code> &nbsp;<code>Google Maps API</code> &nbsp;<code>WebSocket</code></td> -->
-  </tr>
-</table>
+| Role | Name |
+|------|------|
+|  Faculty Advisor | Prof. Dr. Salil Kashyap |
+|  Teaching Assistant | Aditya Gupta |
+|  Student | Emani Sri Ajay Karthik |
+|  Student | G Mani Shankar |
 
 ---
 
