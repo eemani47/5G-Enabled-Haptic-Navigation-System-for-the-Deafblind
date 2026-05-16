@@ -851,7 +851,7 @@ This project is licensed under the **GNU General Public License v3.0** — see t
 
 ## 🎬 Demo
 
-[![Watch the demo](https://img.shields.io/badge/Watch-Demo%20Video-red?style=for-the-badge&logo=youtube)]([YOUR_VIDEO_LINK_HERE](https://drive.google.com/drive/folders/1ng-BPUKp2r5qMjSuTW8unrUdH3J2a17x?usp=sharing))
+[![Watch the demo]((https://drive.google.com/drive/folders/1ng-BPUKp2r5qMjSuTW8unrUdH3J2a17x?usp=sharing))]([YOUR_VIDEO_LINK_HERE])
 
 ---
 
