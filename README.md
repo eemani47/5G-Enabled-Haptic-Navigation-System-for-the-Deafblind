@@ -59,7 +59,7 @@ Existing assistive solutions for the blind (screen reader + voice navigation) st
 
 ---
 
-## 3. System Architecture
+## 3. System Architecture(Simplified)
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
