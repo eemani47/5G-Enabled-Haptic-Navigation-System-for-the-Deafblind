@@ -1,11 +1,11 @@
-# 🤲 5G-Enabled Haptic Navigation System for the Blind-Deaf
+#  5G-Enabled Haptic Navigation System for the Blind-Deaf
 
 > **Distributed Spatial Intelligence and Haptic Feedback Framework**  
 > A wearable assistive navigation system that restores independent mobility to deafblind individuals through tactile vibration — no vision, no hearing required.
 
 ---
 
-## 📋 Table of Contents
+##  Table of Contents
 
 1. [Project Overview](#1-project-overview)
 2. [The Problem We're Solving](#2-the-problem-were-solving)
@@ -65,8 +65,8 @@ Existing assistive solutions for the blind (screen reader + voice navigation) st
 ┌─────────────────────────────────────────────────────────────────────────┐
 │                          USER INTERACTION LAYER                         │
 │                                                                         │
-│   [Conductive Glove]        [GPS Module]          [5G Radio]            │
-│   dot · dash · action       NMEA sentences        WebSocket channel     │
+│  [Conductive Glove]          [GPS Module]          [5G Radio]           │
+│  dot · dash · action pins    NMEA sentences        WebSocket channel    │
 └────────────────┬────────────────┬──────────────────────┬─────────────── ┘
                  │                │                      │
          ┌───────▼────────────────▼──────────────────────▼─────── ┐
@@ -78,8 +78,8 @@ Existing assistive solutions for the blind (screen reader + voice navigation) st
          │   │                   │                            │   │
          │   │  State Machine: INPUT → REVIEW → NAV → PAUSED  │   │
          │   │  FreeRTOS Queue (outgoing commands)            │   │
-         │   └────────────────────────────────────────────────┘   │
-         │                                                        │
+         │   └─────────────────────|──────────────────────────┘   │
+         │                         ▼                              │
          │   ┌─── Core 1 (Radio & GPS Sync) ───────────────── ┐   │
          │   │  GPS Reader (mutex-locked lat/lon cache)       │   │
          │   │  WS Manager: connect · ping · kill-switch 10s  │   │
@@ -849,21 +849,38 @@ This project is licensed under the **GNU General Public License v3.0** — see t
 
 ---
 
-## 👥 Authors & Team
+##  Authors & Team
 
-### Faculty Advisor
-**Prof. Dr. Salil Kashyap**
-
-### Teaching Assistant
-**Aditya Gupta**
-
-### Development Team
-
-| Name | Role |
-|---|---|
-| **Emani Sri Ajay Karthik**  |
-| **G Mani Shankar** |
+>  April 2026 · IIT Guwahati
 
 ---
 
-*Built with 💙 for deafblind independence.*
+<table>
+  <tr>
+    <td align="center" width="200"><b> Faculty Advisor</b><br/><br/>Prof. Dr. Salil Kashyap</td>
+    <td align="center" width="200"><b> Teaching Assistant</b><br/><br/>Aditya Gupta</td>
+  </tr>
+</table>
+
+---
+
+###  Team
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Built</th>
+  </tr>
+  <tr>
+    <td><b>Emani Sri Ajay Karthik</b></td>
+    <!-- <td><code>ESP32</code> &nbsp;<code>FreeRTOS</code> &nbsp;<code>firmware</code> &nbsp;<code>haptic engine</code></td> -->
+  </tr>
+  <tr>
+    <td><b>G Mani Shankar</b></td>
+    <!-- <td><code>edge server</code> &nbsp;<code>nav engine</code> &nbsp;<code>Google Maps API</code> &nbsp;<code>WebSocket</code></td> -->
+  </tr>
+</table>
+
+---
+
+*When maps fail, feel the way.*
