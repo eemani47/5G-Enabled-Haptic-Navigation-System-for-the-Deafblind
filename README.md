@@ -67,22 +67,22 @@ Existing assistive solutions for the blind (screen reader + voice navigation) st
 │                                                                         │
 │   [Conductive Glove]        [GPS Module]          [5G Radio]            │
 │   dot · dash · action       NMEA sentences        WebSocket channel     │
-└────────────────┬────────────────┬──────────────────────┬───────────────┘
+└────────────────┬────────────────┬──────────────────────┬─────────────── ┘
                  │                │                      │
-         ┌───────▼────────────────▼──────────────────────▼───────┐
+         ┌───────▼────────────────▼──────────────────────▼─────── ┐
          │              ESP32 — FreeRTOS Dual-Core                │
          │                                                        │
-         │   ┌─── Core 0 (Input Processor) ──────────────────┐   │
-         │   │  Debounce (25ms)  │  6-bit decode             │   │
-         │   │  5 buttons        │  dot/dash → char A-Z,0-9  │   │
+         │   ┌─── Core 0 (Input Processor) ────────────────── ┐   │
+         │   │  Debounce (25ms)  │  6-bit decode              │   │
+         │   │  5 buttons        │  dot/dash → char A-Z,0-9   │   │
          │   │                   │                            │   │
-         │   │  State Machine: INPUT → REVIEW → NAV → PAUSED │   │
+         │   │  State Machine: INPUT → REVIEW → NAV → PAUSED  │   │
          │   │  FreeRTOS Queue (outgoing commands)            │   │
          │   └────────────────────────────────────────────────┘   │
          │                                                        │
-         │   ┌─── Core 1 (Radio & GPS Sync) ─────────────────┐   │
+         │   ┌─── Core 1 (Radio & GPS Sync) ───────────────── ┐   │
          │   │  GPS Reader (mutex-locked lat/lon cache)       │   │
-         │   │  WS Manager: connect · ping · kill-switch 10s │   │
+         │   │  WS Manager: connect · ping · kill-switch 10s  │   │
          │   │  Telemetry Dispatcher: GPS every 5s            │   │
          │   │  Auto-Resume Engine: reconnect → replay dest   │   │
          │   └────────────────────────────────────────────────┘   │
@@ -91,22 +91,22 @@ Existing assistive solutions for the blind (screen reader + voice navigation) st
                     5G WebSocket · URLLC · MEC · Network Slicing
                                      │
          ┌───────────────────────────▼────────────────────────────┐
-         │           Python Edge Server — 5G MEC Node              │
+         │           Python Edge Server — 5G MEC Node             │
          │                                                        │
          │   ┌─── WebSocket Handler ──────────────────────────┐   │
          │   │  asyncio + websockets                          │   │
          │   │  Parses: dest init, GPS telemetry, commands    │   │
          │   └────────────────────────────────────────────────┘   │
          │                                                        │
-         │   ┌─── Route Generator ───┐  ┌─── Telemetry Proc ─┐   │
-         │   │  Google Maps API      │  │  map-match (4m)    │   │
-         │   │  1m path densification│  │  bearing diff >22° │   │
-         │   └───────────────────────┘  └────────────────────┘   │
+         │   ┌─── Route Generator ───┐  ┌─── Telemetry Proc ─┐    │
+         │   │  Google Maps API      │  │  map-match (4m)    │    │
+         │   │  1m path densification│  │  bearing diff >22° │    │
+         │   └───────────────────────┘  └────────────────────┘    │
          │                                                        │
-         │   ┌─── Action Points ─────┐  ┌─── Instruction Out ┐   │
-         │   │  TURN_LEFT/RIGHT      │  │  KEEP STRAIGHT     │   │
-         │   │  Triggered 1m before  │  │  ARRIVED / DRIFT   │   │
-         │   └───────────────────────┘  └────────────────────┘   │
+         │   ┌─── Action Points ─────┐  ┌─── Instruction Out ┐    │
+         │   │  TURN_LEFT/RIGHT      │  │  KEEP STRAIGHT     │    │
+         │   │  Triggered 1m before  │  │  ARRIVED / DRIFT   │    │
+         │   └───────────────────────┘  └────────────────────┘    │
          │                                                        │
          │   Folium live map → live_nav_map.html (updates on GPS) │
          └────────────────────────────────────────────────────────┘
@@ -204,7 +204,7 @@ Once navigation is active, the same five fingers switch to real-time command mod
 
 ## 5. Hardware — ESP32 Firmware (C++)
 
-**File:** `tcp_version.cpp`
+**File:** `user_module_code.cpp`
 
 The firmware is written for the ESP32 using the Arduino framework on top of FreeRTOS. The ESP32's dual-core architecture is a central design choice — we use it to guarantee that the networking/GPS work on Core 1 never blocks the input scanning on Core 0, which must respond to button presses within milliseconds.
 
@@ -403,7 +403,7 @@ The user never needs to re-enter their destination. The system silently saves th
 
 ## 6. Server — Edge Navigation Engine (Python)
 
-**File:** `websockets_version.py`
+**File:** `server_side_code.py`
 
 The server is a Python `asyncio` application built around the `websockets` library. It runs as a persistent async WebSocket server on port 8765 and is designed to run indefinitely — it catches its own exceptions and restarts itself automatically.
 
@@ -841,7 +841,28 @@ In all these cases, the modularity of our architecture means only the positional
 
 ## License
 
-This project was developed as a hackathon prototype. All rights reserved by the project authors.
+This project is licensed under the **GNU General Public License v3.0** — see the [LICENSE](LICENSE) file for details.
+
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+
+> In short: you are free to use, modify, and distribute this project, but any derivative work must also be open-sourced under the same GPL v3 license.
+
+---
+
+## 👥 Authors & Team
+
+### Faculty Advisor
+**Prof. Dr. Salil Kashyap**
+
+### Teaching Assistant
+**Aditya Gupta**
+
+### Development Team
+
+| Name | Role |
+|---|---|
+| **Emani Sri Ajay Karthik**  |
+| **G Mani Shankar** |
 
 ---
 
