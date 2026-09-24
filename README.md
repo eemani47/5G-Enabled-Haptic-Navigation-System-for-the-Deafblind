@@ -614,19 +614,19 @@ This system is specifically designed to exploit four structural features of 5G t
 
 ### URLLC — Ultra-Reliable Low-Latency Communication
 
-Tactile navigation requires deterministic timing. If a "turn left" instruction arrives 300ms late, the user has already walked past the turn. 4G introduces non-deterministic jitter that can exceed 100ms under load; public Wi-Fi can exceed 500ms during congestion. 5G URLLC guarantees sub-30ms end-to-end latency for the WebSocket channel. At a walking pace of ~1 m/s, 30ms of latency means the instruction arrives while the user is still 0.97m from the turn, reducing the effect of network jitter.
+Tactile navigation requires deterministic timing. If a "turn left" instruction arrives 300ms late, the user has already walked past the turn. 4G introduces non-deterministic jitter that can exceed 100ms under load; public Wi-Fi can exceed 500ms during congestion. 5G URLLC guarantees sub-30ms end-to-end latency for the WebSocket channel. At a walking pace of ~1 m/s, 30ms of latency means the instruction arrives while the user is still 0.97m from the turn — functionally instantaneous.
 
 ### MEC — Multi-access Edge Computing
 
-Our Python navigation server runs on the 5G base station itself (the MEC node), not on a distant cloud server. This eliminates the "backhaul" leg of the network — the data never has to travel to a remote data center and back. The round-trip path is: wrist → base station → MEC server → base station → wrist. This shortened path is what makes the low-latency interaction achievable in practice at the network junction.
+Our Python navigation server runs on the 5G base station itself (the MEC node), not on a distant cloud server. This eliminates the "backhaul" leg of the network — the data never has to travel to a remote data center and back. The round-trip path is: wrist → base station → MEC server → base station → wrist. This is what makes the sub-30ms latency achievable in practice, not just in theory.
 
 ### Network Slicing for Mission-Critical Isolation
 
-A public 5G tower is shared by hundreds of devices simultaneously streaming video, downloading files, browsing social media. During peak congestion, throughput for any one device can drop dramatically. Network slicing creates a **virtualized, isolated channel** carved out of the same physical infrastructure, with a guaranteed bandwidth reservation that is completely protected from consumer traffic. Our navigation WebSocket stream runs in this isolated slice, ensuring it is never starved for bandwidth even during peak hours and remains within a predictable communication framework.
+A public 5G tower is shared by hundreds of devices simultaneously streaming video, downloading files, browsing social media. During peak congestion, throughput for any one device can drop dramatically. Network slicing creates a **virtualized, isolated channel** carved out of the same physical infrastructure, with a guaranteed bandwidth reservation that is completely protected from consumer traffic. Our navigation WebSocket stream runs in this isolated slice, ensuring it is never starved for bandwidth even during peak hours.
 
 ### eMBB — Enhanced Mobile Broadband (Future Roadmap)
 
-The current system sends only small JSON packets (GPS coordinates, text instructions). The eMBB layer is reserved for the next development phase: streaming a live camera feed from the user's wearable to the edge server for real-time obstacle detection via computer vision. The eMBB uplink capacity (multiple Gbps) is the only wireless standard capable of supporting high-definition video streaming at this scale from a wearable device over an eMBB uplink.
+The current system sends only small JSON packets (GPS coordinates, text instructions). The eMBB layer is reserved for the next development phase: streaming a live camera feed from the user's wearable to the edge server for real-time obstacle detection via computer vision. The eMBB uplink capacity (multiple Gbps) is the only wireless standard capable of supporting high-definition video streaming at this scale from a wearable device.
 
 ---
 
