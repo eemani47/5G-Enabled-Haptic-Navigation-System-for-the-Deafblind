@@ -626,7 +626,7 @@ A public 5G tower is shared by hundreds of devices simultaneously streaming vide
 
 ### eMBB — Enhanced Mobile Broadband (Future Roadmap)
 
-The current system sends only small JSON packets (GPS coordinates, text instructions). The eMBB layer is reserved for the next development phase: streaming a live camera feed from the user's wearable to the edge server for real-time obstacle detection via computer vision. The eMBB uplink capacity (multiple Gbps) is the only wireless standard capable of supporting high-definition video streaming at this scale from a wearable device.
+JSON payloads remain intentionally small in the current system, carrying only GPS coordinates and text instructions. Jitter is therefore kept to a minimum while the wearable exchanges compact navigation data with the edge server. For the next development phase, the eMBB layer is reserved for streaming a live camera feed from the user's wearable to the edge server for real-time obstacle detection via computer vision. Under that future design, the higher uplink capacity of eMBB would support high-definition video streaming from a wearable device.
 
 ---
 
